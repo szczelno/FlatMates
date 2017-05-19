@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "969340458814",
+    "firebase_url": "https://flatmates-ad776.firebaseio.com",
+    "project_id": "flatmates-ad776",
+    "storage_bucket": "flatmates-ad776.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:969340458814:android:3dc1aae15268902f",
+        "android_client_info": {
+          "package_name": "com.example.deltaf.flatmates"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "969340458814-8qjnknj94n6s65rhf2ekj74qku80gn4a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.deltaf.flatmates",
+            "certificate_hash": "afdaafefc2aa88617bebe92f73f7a01e63de34c9"
+          }
+        },
+        {
+          "client_id": "969340458814-1n2hc5r4eh8g82vmpguo30vqc23knj41.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIRSsNvg3IgyJ3drTDXLisdWQs4LsRGBs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "969340458814-1n2hc5r4eh8g82vmpguo30vqc23knj41.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
