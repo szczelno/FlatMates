@@ -12,8 +12,8 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:clickable="true"
@@ -28,6 +28,14 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/fab">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Message..."
+            android:id="@+id/input"
+            />
+
     </android.support.design.widget.TextInputLayout>
     <ListView
         android:id="@+id/list_of_message"
