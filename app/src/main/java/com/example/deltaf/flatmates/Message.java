@@ -14,7 +14,7 @@ public class Message {
 
         messageTime = new Date().getTime();
     }
-
+    //change
 
     public Message(){
 
