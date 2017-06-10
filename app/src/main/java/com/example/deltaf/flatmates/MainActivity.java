@@ -9,13 +9,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+import android.text.format.DateFormat;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -69,7 +74,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         activity_main=(RelativeLayout)findViewById(R.id.activity_main);
         fab=(FloatingActionButton) findViewById(R.id.fab);
-
+        fab.setOnClickListener (new View.OnClickListener(){
+            @Override
+                    public void onClick (View view){
+                EditText input = (EditText)findViewById(R.id.input);
+                FirebaseDatabase.getInstance().getReference().push().setValue(new Message(input.getText().toString(),
+                        FirebaseAuth.getInstance().getCurrentUser().getEmail()));
+                input.setText("");
+            }
+        });
         //changes! SO MUCH CHANGES
         if (FirebaseAuth.getInstance().getCurrentUser()==null)
         {
@@ -78,11 +91,29 @@ public class MainActivity extends AppCompatActivity {
     else
         {
             Snackbar.make(activity_main, "Welcome " +FirebaseAuth.getInstance().getCurrentUser().getEmail(), Snackbar.LENGTH_SHORT);
+            displayChatMessage();
         }
-        displayChatMessage();
     }
-    private void displayChatMessage()
-    {
 
+    private void displayChatMessage(){
+
+        ListView listOfMessage = (ListView) findViewById(R.id.list_of_message);
+        adapter = new FirebaseListAdapter<Message>(this, Message.class, R.layout.list_item, FirebaseDatabase.getInstance().getReference())
+        {
+
+            @Override
+            protected void populateView(View v, Message model, int position) {
+                //Get references to the views of list_item.xml
+                TextView messageText, messageUser, messageTime;
+                messageText = (TextView) v.findViewById((R.id.message_text));
+                messageUser = (TextView) v.findViewById((R.id.message_user));
+                messageTime = (TextView) v.findViewById((R.id.message_time));
+
+                messageText.setText(model.getMessageText());
+                messageUser.setText(model.getMessageUser());
+                messageTime.setText(DateFormat.format("dd-MM-yyy (HH:mm:ss)", model.getMessageTime()));
+            }
+        };
+listOfMessage.setAdapter(adapter);
     }
 }
